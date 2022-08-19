@@ -41,7 +41,7 @@ namespace NeuralNetwork.Tests
                 { 1, 1, 1, 1 }
             };
 
-            var topology = new Topology(4, 1, 0.1, 2);
+            var topology = new Topology(4, 1, 0.1, 3, 2);
             var neuralNetwork = new NeuralNetwork(topology);
             var difference = neuralNetwork.Learn(outputs, inputs, 10000);
 
@@ -55,8 +55,8 @@ namespace NeuralNetwork.Tests
 
             for (int i = 0; i < results.Count; i++)
             {
-                var expected = Math.Round(outputs[i], 2);
-                var actual = Math.Round(results[i], 2);
+                var expected = Math.Round(outputs[i], 1);
+                var actual = Math.Round(results[i], 1);
                 Assert.AreEqual(expected, actual);
             }
         }
@@ -81,8 +81,6 @@ namespace NeuralNetwork.Tests
                 }
             }
             var inputSignals = new double[inputs.Count,inputs[0].Length];
-            var a = inputSignals.GetLength(0);
-            var b = inputSignals.GetLength(1);
 
             for (int i = 0; i < inputSignals.GetLength(0); i++)
             {
@@ -93,20 +91,25 @@ namespace NeuralNetwork.Tests
             }
             var topology = new Topology(outputs.Count, 1, 0.1, outputs.Count / 2);
             var neuralNetwork = new NeuralNetwork(topology);
-            var difference = neuralNetwork.Learn(outputs.ToArray(), inputSignals, 10000);
+
+            var normalizedInputs =  DataSetHelper.Normalization(inputSignals);
+
+            var difference = neuralNetwork.Learn(outputs.ToArray(), normalizedInputs, 10000);
 
             var results = new List<double>();
+            var normalizedInputsSignalsList = normalizedInputs.ToListArrays();
+
             for (int i = 0; i < outputs.Count; i++)
             {
-                var row = inputs[i];
-                var res = neuralNetwork.Predict(inputs[i]).Output;
+                var row = normalizedInputsSignalsList[i];
+                var res = neuralNetwork.Predict(normalizedInputsSignalsList[i]).Output;
                 results.Add(res);
             }
 
             for (int i = 0; i < results.Count; i++)
             {
-                var expected = Math.Round(outputs[i], 2);
-                var actual = Math.Round(results[i], 2);
+                var expected = Math.Round(outputs[i], 1);
+                var actual = Math.Round(results[i], 1);
                 Assert.AreEqual(expected, actual);
             }
         }

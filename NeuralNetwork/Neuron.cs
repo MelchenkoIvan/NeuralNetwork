@@ -80,8 +80,8 @@
                 return;
             }
 
-            Delta = error * SigmoidDx(Output);
-
+            //var delta = error * SigmoidDx(Output);
+            Delta = error * Output * (1 - Output);
             for (int i = 0; i < Weights.Count; i++)
             {
                 var weight = Weights[i];

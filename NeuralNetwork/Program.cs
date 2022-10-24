@@ -111,12 +111,12 @@ internal class Program
 
         Console.WriteLine("We are learning heart health NN now");
         var startTime = DateTime.Now;
-        var topology = new Topology(outputs.Count, 1, 0.1, outputs.Count / 2);
+        var topology = new Topology(outputs.Count, 1, 0.01, outputs.Count / 2);
         var neuralNetwork = new NeuralNetwork.NeuralNetwork(topology);
 
         var normalizedInputs = DataSetHelper.Normalization(inputSignals);
 
-        neuralNetwork.Learn(outputs.ToArray(), normalizedInputs, 10000);
+        neuralNetwork.Learn(outputs.ToArray(), normalizedInputs, 20000);
         Console.WriteLine($"NN learnd during: {DateTime.Now - startTime}");
         return neuralNetwork;
 
@@ -146,16 +146,22 @@ internal class Program
         var normalizedInputs = DataSetHelper.Normalization(inputSignals);
         var normalizedInputsSignalsList = normalizedInputs.ToListArrays();
 
+        var correct = 0; 
         for (int i = 0; i < outputs.Count; i++)
         {
             var row = normalizedInputsSignalsList[i];
             var res = (int)Math.Round(neuralNetwork.Predict(normalizedInputsSignalsList[i]).Output);
             if (outputs[i] == res)
+            {
+                correct += 1;
                 Console.WriteLine("Result is equal target");
+            }
             else
                 Console.WriteLine("Result is not equal target");
 
         }
+        var predictionAccuracy = (correct * 100) / outputs.Count;
+        Console.WriteLine($"Prediction accurcy - {predictionAccuracy}%");
     }
     static void Main(string[] args)
     {

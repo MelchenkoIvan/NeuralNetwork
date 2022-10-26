@@ -111,12 +111,12 @@ internal class Program
 
         Console.WriteLine("We are learning heart health NN now");
         var startTime = DateTime.Now;
-        var topology = new Topology(outputs.Count, 1, 0.01, outputs.Count / 2);
+        var topology = new Topology(outputs.Count, 1, 0.1, outputs.Count / 2);
         var neuralNetwork = new NeuralNetwork.NeuralNetwork(topology);
 
         var normalizedInputs = DataSetHelper.Normalization(inputSignals);
 
-        neuralNetwork.Learn(outputs.ToArray(), normalizedInputs, 20000);
+        neuralNetwork.Learn(outputs.ToArray(), normalizedInputs, 10000);
         Console.WriteLine($"NN learnd during: {DateTime.Now - startTime}");
         return neuralNetwork;
 

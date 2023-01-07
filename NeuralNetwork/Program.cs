@@ -84,14 +84,17 @@ internal class Program
     {
         var outputs = new List<double>();
         var inputs = new List<double[]>();
+        int inputLayerNuronsCount = 0;
+
         using (var sr = new StreamReader("/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetworkTests1/heart.csv"))
         {
             var header = sr.ReadLine();
 
+            inputLayerNuronsCount = header!.Split(',').Count() - 1;
             while (!sr.EndOfStream)
             {
                 var row = sr.ReadLine();
-                var values = row.Split(',').Select(v => Convert.ToDouble(v)).ToList();
+                var values = row.Split(',').Select(v => Convert.ToDouble(v.Replace('.', ','))).ToList();
                 var output = values.Last();
                 var input = values.Take(values.Count - 1).ToArray();
 
@@ -111,10 +114,19 @@ internal class Program
 
         Console.WriteLine("We are learning heart health NN now");
         var startTime = DateTime.Now;
-        var topology = new Topology(outputs.Count, 1, 0.1, outputs.Count / 2);
+
+        var hiddenLeyersCountCount = inputLayerNuronsCount - 2;
+
+        int[] hiddenLayers = new int[hiddenLeyersCountCount];
+        for (int i = 0; i < hiddenLeyersCountCount; i++)
+        {
+            hiddenLayers[i] = inputLayerNuronsCount - 1 - i;
+        }
+
+        var topology = new Topology(inputLayerNuronsCount, 1, 0.1, 7);
         var neuralNetwork = new NeuralNetwork.NeuralNetwork(topology);
 
-        var normalizedInputs = DataSetHelper.Normalization(inputSignals);
+        var normalizedInputs = DataSetHelper.Scalling(inputSignals);
 
         neuralNetwork.Learn(outputs.ToArray(), normalizedInputs, 10000);
         Console.WriteLine($"NN learnd during: {DateTime.Now - startTime}");
@@ -125,14 +137,15 @@ internal class Program
     {
         var outputs = new List<double>();
         var inputs = new List<double[]>();
+        int inputLayerNuronsCount = 0; 
         using (var sr = new StreamReader("/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetworkTests1/heartTest.csv"))
         {
             var header = sr.ReadLine();
-
+            inputLayerNuronsCount = header!.Split(',').Count() - 1;
             while (!sr.EndOfStream)
             {
                 var row = sr.ReadLine();
-                var values = row.Split(',').Select(v => Convert.ToDouble(v)).ToList();
+                var values = row.Split(',').Select(v => Convert.ToDouble(v.Replace('.', ','))).ToList();
                 var output = values.Last();
                 var input = values.Take(values.Count - 1).ToArray();
 
@@ -143,14 +156,21 @@ internal class Program
 
         var results = new List<double>();
         var inputSignals = new double[inputs.Count, inputs[0].Length];
-        var normalizedInputs = DataSetHelper.Normalization(inputSignals);
+        for (int i = 0; i < inputSignals.GetLength(0); i++)
+        {
+            for (int j = 0; j < inputSignals.GetLength(1); j++)
+            {
+                inputSignals[i, j] = inputs[i][j];
+            }
+        }
+        var normalizedInputs = DataSetHelper.Scalling(inputSignals);
         var normalizedInputsSignalsList = normalizedInputs.ToListArrays();
 
         var correct = 0; 
         for (int i = 0; i < outputs.Count; i++)
         {
             var row = normalizedInputsSignalsList[i];
-            var res = (int)Math.Round(neuralNetwork.Predict(normalizedInputsSignalsList[i]).Output);
+            var res = (int)Math.Round(neuralNetwork.Predict(row).Output);
             if (outputs[i] == res)
             {
                 correct += 1;
@@ -164,14 +184,9 @@ internal class Program
         Console.WriteLine($"Prediction accurcy - {predictionAccuracy}%");
     }
     static void Main(string[] args)
-    {
-        
+    { 
         var heartSickNNModel = LearnHeartSickModel();
         HeartIsSick(heartSickNNModel);
-
-        var sickNNModel = LearnSickModel();
-        IsSick(sickNNModel);
-
     }
 }
 

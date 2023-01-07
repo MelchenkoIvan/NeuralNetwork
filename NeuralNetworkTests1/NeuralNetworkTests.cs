@@ -65,14 +65,16 @@ namespace NeuralNetwork.Tests
         {
             var outputs = new List<double>();
             var inputs = new List<double[]>();
+            int inputLayerNuronsCount = 0;
+
             using (var sr = new StreamReader("heart.csv"))
             {
                 var header = sr.ReadLine();
-
+                inputLayerNuronsCount = header!.Split(',').Count();
                 while (!sr.EndOfStream)
                 {
                     var row = sr.ReadLine();
-                    var values = row.Split(',').Select(v => Convert.ToDouble(v)).ToList();
+                    var values = row.Split(',').Select(v => Convert.ToDouble(v.Replace('.', ','))).ToList();
                     var output = values.Last();
                     var input = values.Take(values.Count - 1).ToArray();
 
@@ -89,7 +91,15 @@ namespace NeuralNetwork.Tests
                     inputSignals[i, j] = inputs[i][j];
                 }
             }
-            var topology = new Topology(outputs.Count, 1, 0.1, outputs.Count / 2);
+            var hiddenLeyersCountCount = inputLayerNuronsCount - 2;
+
+            int[] hiddenLayers = new int[hiddenLeyersCountCount];
+            for (int i = 0; i < hiddenLeyersCountCount; i++)
+            {
+                hiddenLayers[i] = inputLayerNuronsCount - 1 - i;
+            }
+
+            var topology = new Topology(inputLayerNuronsCount, 1, 0.1, hiddenLayers);
             var neuralNetwork = new NeuralNetwork(topology);
 
             var normalizedInputs =  DataSetHelper.Normalization(inputSignals);

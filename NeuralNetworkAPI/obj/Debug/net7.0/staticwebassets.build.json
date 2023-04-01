@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "mZYNqRhre3bF9tMihTZ/IE8eclR9RVoM95jHxvGEhb4=",
+  "Source": "NeuralNetworkAPI",
+  "BasePath": "_content/NeuralNetworkAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

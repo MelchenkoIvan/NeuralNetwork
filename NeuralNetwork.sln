@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeuralNetwork", "NeuralNetwork\NeuralNetwork.csproj", "{A5E1E7EF-E7A1-45B5-A35B-9C12F7A71BFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedForwardNeuralNetwork", "NeuralNetwork\FeedForwardNeuralNetwork.csproj", "{A5E1E7EF-E7A1-45B5-A35B-9C12F7A71BFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkTests1", "NeuralNetworkTests1\NeuralNetworkTests1.csproj", "{9C8B196D-E278-4EEE-BFB0-90981283078B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkTests", "NeuralNetworkTests1\NeuralNetworkTests.csproj", "{9C8B196D-E278-4EEE-BFB0-90981283078B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecurrentNeuralNetwork", "RecurrentNeuralNetwork\RecurrentNeuralNetwork.csproj", "{FDAD5065-1A9A-4B55-87DF-7D1ACFEDAFE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkAPI", "NeuralNetworkAPI\NeuralNetworkAPI.csproj", "{2CA6CA59-CDF4-4D34-ACB8-3A99A4925599}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetowrkCore", "NeuralNetowrkCore\NeuralNetowrkCore.csproj", "{DB3C308A-EC75-4AB9-888B-8FEC54A07F52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkDatabase", "NeuralNetworkDatabase\NeuralNetworkDatabase.csproj", "{1E28310A-5E32-436C-A8FA-76A6FCCB0206}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,22 @@ Global
 		{9C8B196D-E278-4EEE-BFB0-90981283078B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C8B196D-E278-4EEE-BFB0-90981283078B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C8B196D-E278-4EEE-BFB0-90981283078B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDAD5065-1A9A-4B55-87DF-7D1ACFEDAFE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDAD5065-1A9A-4B55-87DF-7D1ACFEDAFE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDAD5065-1A9A-4B55-87DF-7D1ACFEDAFE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDAD5065-1A9A-4B55-87DF-7D1ACFEDAFE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CA6CA59-CDF4-4D34-ACB8-3A99A4925599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CA6CA59-CDF4-4D34-ACB8-3A99A4925599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CA6CA59-CDF4-4D34-ACB8-3A99A4925599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CA6CA59-CDF4-4D34-ACB8-3A99A4925599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB3C308A-EC75-4AB9-888B-8FEC54A07F52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB3C308A-EC75-4AB9-888B-8FEC54A07F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB3C308A-EC75-4AB9-888B-8FEC54A07F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB3C308A-EC75-4AB9-888B-8FEC54A07F52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E28310A-5E32-436C-A8FA-76A6FCCB0206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E28310A-5E32-436C-A8FA-76A6FCCB0206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E28310A-5E32-436C-A8FA-76A6FCCB0206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E28310A-5E32-436C-A8FA-76A6FCCB0206}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

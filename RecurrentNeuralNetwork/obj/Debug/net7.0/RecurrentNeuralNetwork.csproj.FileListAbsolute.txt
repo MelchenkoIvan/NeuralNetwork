@@ -1,0 +1,15 @@
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/bin/Debug/net7.0/RecurrentNeuralNetwork
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/bin/Debug/net7.0/RecurrentNeuralNetwork.deps.json
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/bin/Debug/net7.0/RecurrentNeuralNetwork.runtimeconfig.json
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/bin/Debug/net7.0/RecurrentNeuralNetwork.dll
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/bin/Debug/net7.0/RecurrentNeuralNetwork.pdb
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/obj/Debug/net7.0/RecurrentNeuralNetwork.csproj.AssemblyReference.cache
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/obj/Debug/net7.0/RecurrentNeuralNetwork.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/obj/Debug/net7.0/RecurrentNeuralNetwork.AssemblyInfoInputs.cache
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/obj/Debug/net7.0/RecurrentNeuralNetwork.AssemblyInfo.cs
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/obj/Debug/net7.0/RecurrentNeuralNetwork.csproj.CoreCompileInputs.cache
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/obj/Debug/net7.0/RecurrentNeuralNetwork.dll
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/obj/Debug/net7.0/refint/RecurrentNeuralNetwork.dll
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/obj/Debug/net7.0/RecurrentNeuralNetwork.pdb
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/obj/Debug/net7.0/RecurrentNeuralNetwork.genruntimeconfig.cache
+/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/obj/Debug/net7.0/ref/RecurrentNeuralNetwork.dll

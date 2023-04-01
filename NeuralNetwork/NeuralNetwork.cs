@@ -18,9 +18,6 @@
 
         public Neuron Predict(params double[] inputSignals)
         {
-
-            //var signals = Normalization(inputSignals);
-
             SendSignalsToInputNeurons(inputSignals);
             FeedForwardAllLayersAfterInput();
 
@@ -36,8 +33,6 @@
 
         public double Learn(double[] expected, double[,] inputs, int epoch)
         {
-            //var signals = DataSetHelper.Normalization(inputs);
-
             var error = 0.0;
             for (int i = 0; i < epoch; i++)
             {

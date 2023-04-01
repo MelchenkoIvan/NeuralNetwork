@@ -1,0 +1,108 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "FeedForwardNeuralNetwork/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/FeedForwardNeuralNetwork.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FeedForwardNeuralNetwork.dll": {}
+        }
+      },
+      "RecurrentNeuralNetwork/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/RecurrentNeuralNetwork.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RecurrentNeuralNetwork.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FeedForwardNeuralNetwork/1.0.0": {
+      "type": "project",
+      "path": "../NeuralNetwork/FeedForwardNeuralNetwork.csproj",
+      "msbuildProject": "../NeuralNetwork/FeedForwardNeuralNetwork.csproj"
+    },
+    "RecurrentNeuralNetwork/1.0.0": {
+      "type": "project",
+      "path": "../RecurrentNeuralNetwork/RecurrentNeuralNetwork.csproj",
+      "msbuildProject": "../RecurrentNeuralNetwork/RecurrentNeuralNetwork.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "FeedForwardNeuralNetwork >= 1.0.0",
+      "RecurrentNeuralNetwork >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/ivanmelchenko/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/NeuralNetowrkCore.csproj",
+      "projectName": "NeuralNetowrkCore",
+      "projectPath": "/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/NeuralNetowrkCore.csproj",
+      "packagesPath": "/Users/ivanmelchenko/.nuget/packages/",
+      "outputPath": "/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/ivanmelchenko/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetwork/FeedForwardNeuralNetwork.csproj": {
+              "projectPath": "/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetwork/FeedForwardNeuralNetwork.csproj"
+            },
+            "/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/RecurrentNeuralNetwork.csproj": {
+              "projectPath": "/Users/ivanmelchenko/Repos/NeuralNetwork/RecurrentNeuralNetwork/RecurrentNeuralNetwork.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

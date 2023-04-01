@@ -66,13 +66,6 @@
             return result;
         }
 
-        private double SigmoidDx(double x)
-        {
-            var sigmoid = Sigmoid(x);
-            var result = sigmoid / (1 - sigmoid);
-            return result;
-        }
-
         public void Learn(double error, double learningRate)
         {
             if (NeuronType == NeuronType.Input)
@@ -80,7 +73,6 @@
                 return;
             }
 
-            //var delta = error * SigmoidDx(Output);
             Delta = error * Output * (1 - Output);
             for (int i = 0; i < Weights.Count; i++)
             {

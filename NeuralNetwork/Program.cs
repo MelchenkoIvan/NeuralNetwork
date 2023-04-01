@@ -38,6 +38,7 @@ internal class Program
             stopPrediction = (int)Enum.Parse(typeof(YesNo), temAnswer, true) == 1 ? true : false;
         }
     }
+
     public static NeuralNetwork.NeuralNetwork LearnSickModel()
     {
         var outputs = new double[] { 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0 };
@@ -80,6 +81,7 @@ internal class Program
 
         return neuralNetwork;
     }
+
     public static NeuralNetwork.NeuralNetwork LearnHeartSickModel()
     {
         var outputs = new List<double>();
@@ -123,16 +125,16 @@ internal class Program
             hiddenLayers[i] = inputLayerNuronsCount - 1 - i;
         }
 
-        var topology = new Topology(inputLayerNuronsCount, 1, 0.1, 7);
+        var topology = new Topology(inputLayerNuronsCount, 1, 0.1, 6);
         var neuralNetwork = new NeuralNetwork.NeuralNetwork(topology);
 
         var normalizedInputs = DataSetHelper.Scalling(inputSignals);
 
-        neuralNetwork.Learn(outputs.ToArray(), normalizedInputs, 10000);
+        neuralNetwork.Learn(outputs.ToArray(), normalizedInputs, 5000);
         Console.WriteLine($"NN learnd during: {DateTime.Now - startTime}");
         return neuralNetwork;
-
     }
+
     public static void HeartIsSick(NeuralNetwork.NeuralNetwork neuralNetwork)
     {
         var outputs = new List<double>();
@@ -183,6 +185,7 @@ internal class Program
         var predictionAccuracy = (correct * 100) / outputs.Count;
         Console.WriteLine($"Prediction accurcy - {predictionAccuracy}%");
     }
+
     static void Main(string[] args)
     { 
         var heartSickNNModel = LearnHeartSickModel();

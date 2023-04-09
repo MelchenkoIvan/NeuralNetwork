@@ -11,10 +11,14 @@ namespace NeuralNetworkDatabase.Entities
         public int UserIdentity { get; set; }
 
         [Required]
-        public int Username { get; set; }
+        public string UserName { get; set; }
 
         [Required]
-        public int Password { get; set; }
+        public string Password { get; set; }
+
+        public DateTime CreationDate { get; set; }
+
+        public bool IsActive { get; set; } = false;
 	}
 }
 

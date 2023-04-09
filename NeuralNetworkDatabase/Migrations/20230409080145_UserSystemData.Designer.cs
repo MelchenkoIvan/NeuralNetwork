@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NeuralNetworkDatabase;
 
@@ -11,9 +12,11 @@ using NeuralNetworkDatabase;
 namespace NeuralNetworkDatabase.Migrations
 {
     [DbContext(typeof(NeuralNetworkDbContext))]
-    partial class NeuralNetworkEfModelSnapshot : ModelSnapshot
+    [Migration("20230409080145_UserSystemData")]
+    partial class UserSystemData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,13 +39,11 @@ namespace NeuralNetworkDatabase.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Password")
+                        .HasColumnType("int");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Username")
+                        .HasColumnType("int");
 
                     b.HasKey("UserIdentity");
 

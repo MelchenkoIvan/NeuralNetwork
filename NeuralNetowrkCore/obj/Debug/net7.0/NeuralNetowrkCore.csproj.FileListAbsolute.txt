@@ -8,9 +8,11 @@
 /Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/bin/Debug/net7.0/NeuralNetowrkCore.dll
 /Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/bin/Debug/net7.0/NeuralNetowrkCore.pdb
 /Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/bin/Debug/net7.0/FeedForwardNeuralNetwork.dll
+/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/bin/Debug/net7.0/NeuralNetworkDatabase.dll
 /Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/bin/Debug/net7.0/RecurrentNeuralNetwork.dll
 /Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/bin/Debug/net7.0/RecurrentNeuralNetwork.pdb
 /Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/bin/Debug/net7.0/FeedForwardNeuralNetwork.pdb
+/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/bin/Debug/net7.0/NeuralNetworkDatabase.pdb
 /Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/obj/Debug/net7.0/NeuralNetowrkCore.csproj.AssemblyReference.cache
 /Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/obj/Debug/net7.0/NeuralNetowrkCore.GeneratedMSBuildEditorConfig.editorconfig
 /Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/obj/Debug/net7.0/NeuralNetowrkCore.AssemblyInfoInputs.cache

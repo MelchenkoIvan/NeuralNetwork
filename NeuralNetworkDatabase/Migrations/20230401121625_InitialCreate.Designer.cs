@@ -10,7 +10,7 @@ using NeuralNetworkDatabase;
 
 namespace NeuralNetworkDatabase.Migrations
 {
-    [DbContext(typeof(NeuralNetworkEf))]
+    [DbContext(typeof(NeuralNetworkDbContext))]
     [Migration("20230401121625_InitialCreate")]
     partial class InitialCreate
     {

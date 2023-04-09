@@ -12,19 +12,28 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="FastEndpoints" Version="5.8.1" />
     <PackageReference Include="FastEndpoints.Swagger" Version="5.8.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.4" />
+    <PackageReference Include="FastEndpoints.Security" Version="5.8.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\NeuralNetowrkCore\NeuralNetowrkCore.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\NeuralNetworkDatabase\NeuralNetworkDatabase.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Remove="Endpoints\" />
     <None Remove="Extension\" />
+    <None Remove="Endpoints\User\" />
+    <None Remove="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Endpoints\" />
     <Folder Include="Extension\" />
+    <Folder Include="Endpoints\User\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>

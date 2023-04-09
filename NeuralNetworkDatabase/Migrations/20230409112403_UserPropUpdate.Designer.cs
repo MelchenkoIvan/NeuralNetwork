@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NeuralNetworkDatabase;
 
@@ -11,9 +12,11 @@ using NeuralNetworkDatabase;
 namespace NeuralNetworkDatabase.Migrations
 {
     [DbContext(typeof(NeuralNetworkDbContext))]
-    partial class NeuralNetworkEfModelSnapshot : ModelSnapshot
+    [Migration("20230409112403_UserPropUpdate")]
+    partial class UserPropUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

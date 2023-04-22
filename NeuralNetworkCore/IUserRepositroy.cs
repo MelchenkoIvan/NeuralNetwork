@@ -1,7 +1,7 @@
 ﻿using System;
-using NeuralNetowrkCore.Models;
+using NeuralNetworkCore.Models;
 
-namespace NeuralNetowrkCore
+namespace NeuralNetworkCore
 {
 	public interface IUserRepositroy
 	{

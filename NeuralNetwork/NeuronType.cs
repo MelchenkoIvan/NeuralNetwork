@@ -1,4 +1,4 @@
-﻿namespace NeuralNetwork
+﻿namespace FeedForwardNeuralNetwork
 {
     public enum NeuronType
     {

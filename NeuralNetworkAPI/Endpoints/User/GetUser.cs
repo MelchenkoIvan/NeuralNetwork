@@ -1,8 +1,8 @@
 ﻿using System;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
-using NeuralNetowrkCore;
-using NeuralNetowrkCore.Models;
+using NeuralNetworkCore;
+using NeuralNetworkCore.Models;
 
 namespace NeuralNetworkAPI.Endpoints.User
 {
@@ -15,7 +15,7 @@ namespace NeuralNetworkAPI.Endpoints.User
             _userRepositry = userRepositroy;
         }
 
-        public async override Task<UserDTO> ExecuteAsync(CancellationToken ct)
+        public override async Task<UserDTO> ExecuteAsync(CancellationToken ct)
         {
             var userName = Route<string>("userName");
             var user = await _userRepositry.GetUser(userName!);

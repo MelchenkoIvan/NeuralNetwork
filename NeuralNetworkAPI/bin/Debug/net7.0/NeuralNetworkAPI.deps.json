@@ -13,7 +13,7 @@
           "FastEndpoints.Swagger": "5.8.1",
           "Microsoft.AspNetCore.OpenApi": "7.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
-          "NeuralNetowrkCore": "1.0.0",
+          "NeuralNetworkCore": "1.0.0",
           "NeuralNetworkDatabase": "1.0.0",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
@@ -1181,7 +1181,7 @@
           "FeedForwardNeuralNetwork.dll": {}
         }
       },
-      "NeuralNetowrkCore/1.0.0": {
+      "NeuralNetworkCore/1.0.0": {
         "dependencies": {
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
@@ -1190,7 +1190,7 @@
           "RecurrentNeuralNetwork": "1.0.0"
         },
         "runtime": {
-          "NeuralNetowrkCore.dll": {}
+          "NeuralNetworkCore.dll": {}
         }
       },
       "NeuralNetworkDatabase/1.0.0": {
@@ -2067,7 +2067,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "NeuralNetowrkCore/1.0.0": {
+    "NeuralNetworkCore/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

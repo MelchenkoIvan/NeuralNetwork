@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NeuralNetowrkCore\NeuralNetowrkCore.csproj">
+    <ProjectReference Include="..\NeuralNetworkCore\NeuralNetworkCore.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
     <ProjectReference Include="..\NeuralNetworkDatabase\NeuralNetworkDatabase.csproj">
@@ -29,11 +29,11 @@
     <None Remove="Extension\" />
     <None Remove="Endpoints\User\" />
     <None Remove="Models\" />
+    <None Remove="Endpoints\NeuralNetwork\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Endpoints\" />
     <Folder Include="Extension\" />
     <Folder Include="Endpoints\User\" />
-    <Folder Include="Models\" />
   </ItemGroup>
 </Project>

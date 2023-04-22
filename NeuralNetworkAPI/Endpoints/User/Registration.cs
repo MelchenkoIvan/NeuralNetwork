@@ -1,5 +1,5 @@
 ﻿using System;
-using NeuralNetowrkCore;
+using NeuralNetworkCore;
 using NeuralNetworkAPI.Models;
 
 namespace NeuralNetworkAPI.Endpoints.User

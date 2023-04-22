@@ -1,5 +1,4 @@
-﻿using System;
-namespace NeuralNetwork
+﻿namespace FeedForwardNeuralNetwork
 {
     public enum YesNo
     {
@@ -7,4 +6,3 @@ namespace NeuralNetwork
         YES = 1
     }
 }
-

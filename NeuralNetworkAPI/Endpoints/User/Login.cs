@@ -2,8 +2,8 @@
 using FastEndpoints.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
-using NeuralNetowrkCore;
-using NeuralNetowrkCore.Models;
+using NeuralNetworkCore;
+using NeuralNetworkCore.Models;
 using NeuralNetworkAPI.Models;
 
 namespace NeuralNetworkAPI.Endpoints.User
@@ -22,9 +22,9 @@ namespace NeuralNetworkAPI.Endpoints.User
         public override async Task HandleAsync(LoginViewModel req, CancellationToken ct)
         {
 
-            var isAuthentificated = await _userRepositry.Authenticate(req.UserName, req.Password);
+            var isAuthenticated = await _userRepositry.Authenticate(req.UserName, req.Password);
 
-            if (isAuthentificated)
+            if (isAuthenticated)
             {
                 await CookieAuth.SignInAsync(u =>
                 {

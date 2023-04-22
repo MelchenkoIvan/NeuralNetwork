@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NeuralNetowrkCore;
-using NeuralNetowrkCore.Mapper;
+using NeuralNetworkCore;
+using NeuralNetworkCore.Mapper;
 using NeuralNetworkDatabase;
 
 namespace NeuralNetworkAPI.Extension

@@ -1,4 +1,4 @@
-﻿namespace NeuralNetwork
+﻿namespace FeedForwardNeuralNetwork
 {
     public class Neuron
     {
@@ -31,6 +31,7 @@
                 {
                     Weights.Add(rnd.NextDouble());
                 }
+
                 Inputs.Add(0);
             }
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace NeuralNetowrkCore.Models
+namespace NeuralNetworkCore.Models
 {
 	public class UserDTO
 	{

@@ -1,10 +1,9 @@
-﻿using System;
-using AutoMapper;
-using NeuralNetowrkCore.Models;
+﻿using AutoMapper;
+using NeuralNetworkCore.Models;
 using NeuralNetworkDatabase;
 using NeuralNetworkDatabase.Entities;
 
-namespace NeuralNetowrkCore
+namespace NeuralNetworkCore
 {
 	public class UserRepository : IUserRepositroy
 	{

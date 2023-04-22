@@ -1,9 +1,9 @@
 ﻿using System;
 using AutoMapper;
-using NeuralNetowrkCore.Models;
+using NeuralNetworkCore.Models;
 using NeuralNetworkDatabase.Entities;
 
-namespace NeuralNetowrkCore.Mapper
+namespace NeuralNetworkCore.Mapper
 {
     public class UserProfile : Profile
     {

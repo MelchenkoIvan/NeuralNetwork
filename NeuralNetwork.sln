@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecurrentNeuralNetwork", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkAPI", "NeuralNetworkAPI\NeuralNetworkAPI.csproj", "{2CA6CA59-CDF4-4D34-ACB8-3A99A4925599}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetowrkCore", "NeuralNetowrkCore\NeuralNetowrkCore.csproj", "{DB3C308A-EC75-4AB9-888B-8FEC54A07F52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkCore", "NeuralNetworkCore\NeuralNetworkCore.csproj", "{DB3C308A-EC75-4AB9-888B-8FEC54A07F52}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkDatabase", "NeuralNetworkDatabase\NeuralNetworkDatabase.csproj", "{1E28310A-5E32-436C-A8FA-76A6FCCB0206}"
 EndProject

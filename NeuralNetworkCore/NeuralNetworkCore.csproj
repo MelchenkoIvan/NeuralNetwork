@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>NeuralNetworkCore</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +17,6 @@
     <None Remove="Mapper\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Mapper\" />
   </ItemGroup>
   <ItemGroup>

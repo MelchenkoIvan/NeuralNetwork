@@ -2097,7 +2097,7 @@
           "bin/placeholder/FeedForwardNeuralNetwork.dll": {}
         }
       },
-      "NeuralNetowrkCore/1.0.0": {
+      "NeuralNetworkCore/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -2108,10 +2108,10 @@
           "RecurrentNeuralNetwork": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/NeuralNetowrkCore.dll": {}
+          "bin/placeholder/NeuralNetworkCore.dll": {}
         },
         "runtime": {
-          "bin/placeholder/NeuralNetowrkCore.dll": {}
+          "bin/placeholder/NeuralNetworkCore.dll": {}
         }
       },
       "NeuralNetworkDatabase/1.0.0": {
@@ -6890,10 +6890,10 @@
       "path": "../NeuralNetwork/FeedForwardNeuralNetwork.csproj",
       "msbuildProject": "../NeuralNetwork/FeedForwardNeuralNetwork.csproj"
     },
-    "NeuralNetowrkCore/1.0.0": {
+    "NeuralNetworkCore/1.0.0": {
       "type": "project",
-      "path": "../NeuralNetowrkCore/NeuralNetowrkCore.csproj",
-      "msbuildProject": "../NeuralNetowrkCore/NeuralNetowrkCore.csproj"
+      "path": "../NeuralNetworkCore/NeuralNetworkCore.csproj",
+      "msbuildProject": "../NeuralNetworkCore/NeuralNetworkCore.csproj"
     },
     "NeuralNetworkDatabase/1.0.0": {
       "type": "project",
@@ -6913,7 +6913,7 @@
       "FastEndpoints.Swagger >= 5.8.1",
       "Microsoft.AspNetCore.OpenApi >= 7.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.4",
-      "NeuralNetowrkCore >= 1.0.0",
+      "NeuralNetworkCore >= 1.0.0",
       "NeuralNetworkDatabase >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
@@ -6943,8 +6943,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/NeuralNetowrkCore.csproj": {
-              "projectPath": "/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetowrkCore/NeuralNetowrkCore.csproj"
+            "/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetworkCore/NeuralNetworkCore.csproj": {
+              "projectPath": "/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetworkCore/NeuralNetworkCore.csproj"
             },
             "/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetworkDatabase/NeuralNetworkDatabase.csproj": {
               "projectPath": "/Users/ivanmelchenko/Repos/NeuralNetwork/NeuralNetworkDatabase/NeuralNetworkDatabase.csproj"

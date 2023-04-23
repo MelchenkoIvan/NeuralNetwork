@@ -1,37 +1,70 @@
-import React from "react";
-//import { reduxForm, Field, InjectedFormProps} from "redux-form";
+import React, {FC, useEffect} from "react";
+import { Formik, Field, Form, FormikHelpers } from 'formik';
+import { Header, Button, Input, Icon} from 'semantic-ui-react'
+import { useAppDispatch, useAppSelector} from '../app/hooks'
+import {login, UserLogin}from '../features/userSlice'
+import { userService } from "../services/userService";
+import './LoginForm.css';
+import { useNavigate } from "react-router-dom";
 
-interface LoginFormValuesType{
-    userName: string,
-    password: string
-}
+const LoginForm:FC = ({}) => {
+    const dispatch = useAppDispatch();
+    const currentUser = useAppSelector((state) => state.user.userName)
+    const navigate = useNavigate();
+    const Login = (user:UserLogin) => {
+        userService.Login(user).then(data => {
+            dispatch(login(data ?? ""))
+        })
+    }
 
-const LoginForm:React.FC<InjectedFormProps<LoginFormValuesType>> = ({handleSubmit}) => {
+    useEffect(() => {
+      console.log(currentUser)
+      if(currentUser.length > 0) 
+        navigate("/")
+    }, [currentUser]);
 
     return(
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="username">Username</label>
-                <Field
-                    name="username"
-                    component="input"
-                    type="text"
-                />
-            </div>
+        
+        <Formik
+        initialValues={{ userName: "", password: "" }}
+        onSubmit={(value: UserLogin, {setSubmitting}:FormikHelpers<UserLogin>) => {
+            Login(value)
+            setSubmitting(false)
+          }
+        }
+      >
+        {({ handleSubmit, isSubmitting }) => (
+          <Form
+            onSubmit={handleSubmit}
+            autoComplete="off"
+            className="loginForm"
+          >
+            
+            <Header
+              as="h2"
+              icon ="user"
+              textAlign="center"
+              content="Sign in"
+              className="loginFormHeader"
+            />
+            <div className="userAndPassword">
+              <label htmlFor="userName"><b>User Name: </b></label>
+              <Field id="userName" name="userName" placeholder="John" />
 
-            <div>
-                <label htmlFor="password">Password</label>
-                <Field
-                    name="password"
-                    component="input"
-                    type="password"
-                />
+              <label htmlFor="password"><b>Password: </b></label>
+              <Field id="password" name="password" type="password" />
             </div>
-            <button type="submit">Submit</button>
-        </form>
+            <Button
+              loading={isSubmitting}
+              className="loginButton"
+              content="Login"
+              type="submit"
+              fluid
+            />
+          </Form>
+        )}
+      </Formik>
     )
 }
 
-export default reduxForm<LoginFormValuesType>({
-    form: 'userLogin',
-})(LoginForm)
+export default LoginForm;

@@ -1,16 +1,13 @@
-﻿using System;
-using FastEndpoints.Security;
+﻿using FastEndpoints.Security;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.DataProtection;
 using NeuralNetworkCore;
-using NeuralNetworkCore.Models;
 using NeuralNetworkAPI.Models;
 
 namespace NeuralNetworkAPI.Endpoints.User
 {
-    [HttpGet("/user/login")]
+    [HttpPost("/user/login")]
 	[AllowAnonymous]
-    public class Login : Endpoint<LoginViewModel>
+    public class Login : Endpoint<LoginViewModel, string>
     {
         private readonly IUserRepositroy _userRepositry;
         
@@ -19,7 +16,7 @@ namespace NeuralNetworkAPI.Endpoints.User
             _userRepositry = userRepositroy;
         }
 
-        public override async Task HandleAsync(LoginViewModel req, CancellationToken ct)
+        public override async Task<string> ExecuteAsync(LoginViewModel req, CancellationToken ct)
         {
 
             var isAuthenticated = await _userRepositry.Authenticate(req.UserName, req.Password);
@@ -30,7 +27,10 @@ namespace NeuralNetworkAPI.Endpoints.User
                 {
                     u.Claims.Add(new("usr", req.UserName));
                 });
+                return req.UserName;
             }
+
+            return string.Empty;
         }
 
     }

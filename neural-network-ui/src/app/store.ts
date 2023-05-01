@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from '../features/userSlice';
-//import { reducer as formReducer } from 'redux-form';
+import nnTypeReducer from '../features/neuralNetworkSlice';
 
 export const store = configureStore({
     reducer:{
         user: userReducer,
-//        form: formReducer
+        selectedNNType: nnTypeReducer
     }
 });
 

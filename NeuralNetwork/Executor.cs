@@ -56,7 +56,7 @@ namespace FeedForwardNeuralNetwork
             return neuralNetwork;
         }
 
-        public static double PredictForClient(double[,] inputSignals) =>
+        public static double Predict(double[,] inputSignals) =>
             LearnHeartSickModel()
                 .Predict(DataSetHelper.Scalling(inputSignals).ToListArrays().Single())
                 .Output;

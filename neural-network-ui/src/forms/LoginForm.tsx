@@ -4,7 +4,7 @@ import { Header, Button, Input, Icon} from 'semantic-ui-react'
 import { useAppDispatch, useAppSelector} from '../app/hooks'
 import {login, UserLogin}from '../features/userSlice'
 import { userService } from "../services/userService";
-import './LoginForm.css';
+import './Form.css';
 import { useNavigate } from "react-router-dom";
 
 const LoginForm:FC = ({}) => {
@@ -18,7 +18,6 @@ const LoginForm:FC = ({}) => {
     }
 
     useEffect(() => {
-      console.log(currentUser)
       if(currentUser.length > 0) 
         navigate("/")
     }, [currentUser]);
@@ -37,7 +36,7 @@ const LoginForm:FC = ({}) => {
           <Form
             onSubmit={handleSubmit}
             autoComplete="off"
-            className="loginForm"
+            className="form"
           >
             
             <Header
@@ -45,7 +44,7 @@ const LoginForm:FC = ({}) => {
               icon ="user"
               textAlign="center"
               content="Sign in"
-              className="loginFormHeader"
+              className="formHeader"
             />
             <div className="userAndPassword">
               <label htmlFor="userName"><b>User Name: </b></label>

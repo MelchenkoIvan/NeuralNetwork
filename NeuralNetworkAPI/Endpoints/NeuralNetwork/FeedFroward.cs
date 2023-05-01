@@ -3,11 +3,11 @@ using NeuralNetworkCore.Models;
 
 namespace NeuralNetworkAPI.Endpoints.NeuralNetwork;
 [HttpPost("neuralNetwork/feedforward")]
-public class FeedFroward : Endpoint<SymptomesDTO>
+public class FeedFroward : Endpoint<SymptomesDTO, double>
 {
-    public override Task HandleAsync(SymptomesDTO req, CancellationToken ct)
+    public override Task<double> ExecuteAsync(SymptomesDTO req, CancellationToken ct)
     {
-        var result = Executor.PredictForClient(req.GetInputSignals());
-        return Task.CompletedTask;
+        var result = Executor.Predict(req.GetInputSignals());
+        return Task.FromResult(result);
     }
 }

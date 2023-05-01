@@ -1,3 +1,11 @@
 .App {
   text-align: center;
 }
+
+.changeNeuralNetworkType{
+  position: absolute;
+  right: 60px;
+}
+.changeNeuralNetworkTypeButton{
+  background-color: #2196F3 !important;
+}

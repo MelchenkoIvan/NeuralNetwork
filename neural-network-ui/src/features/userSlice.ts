@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { store } from '../app/store';
 
 export interface UserLogin{
     userName: string;
@@ -6,11 +7,11 @@ export interface UserLogin{
 };
 
 export interface UserState{
-    userName: string;
+    authdata: string;
 };
 
 const initialState: UserState = {
-    userName: ""
+    authdata: ""
 };
 
 const userSlice = createSlice({
@@ -18,10 +19,10 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         logout(state){
-            state.userName = "";
+            state.authdata = "";
         },
         login(state, action: PayloadAction<string>){
-            state.userName = action.payload;
+            state.authdata = action.payload;
         }
     }
 })

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const LoginForm:FC = ({}) => {
     const dispatch = useAppDispatch();
-    const currentUser = useAppSelector((state) => state.user.userName)
+    const authdata = useAppSelector((state) => state.user.authdata)
     const navigate = useNavigate();
     const Login = (user:UserLogin) => {
         userService.Login(user).then(data => {
@@ -18,9 +18,9 @@ const LoginForm:FC = ({}) => {
     }
 
     useEffect(() => {
-      if(currentUser.length > 0) 
+      if(authdata.length > 0) 
         navigate("/")
-    }, [currentUser]);
+    }, [authdata]);
 
     return(
         

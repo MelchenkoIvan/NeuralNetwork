@@ -25,6 +25,14 @@ public class UserController : Controller
         return user;
     }
     
+    [HttpPost("login")]
+    [AllowAnonymous]
+    public async Task<string> Login(LoginViewModel req)
+    {
+        var user = await _userRepositry.Authenticate(req.UserName, req.Password);
+        return user?.UserName;
+    }
+
     [HttpPost("registration")]
     public async Task Registration(LoginViewModel req)
     {

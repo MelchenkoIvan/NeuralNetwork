@@ -5,14 +5,14 @@ import SymptomesForm from "./forms/SymptomesForm";
 import ChangeNeuralNetworkType from "./ChangeNeuralNetworkType";
 
 const NeuralNetworkPage:FC = () => {
-    const currentUser = useAppSelector((state) => state.user.userName);
+    const authdata = useAppSelector((state) => state.user.authdata);
 
     const navigate = useNavigate();
   
     useEffect(() => {
-      if(currentUser.length == 0) 
+      if(authdata.length == 0) 
         navigate("/login")
-    }, [currentUser]);
+    }, [authdata]);
 
     return(
         <>

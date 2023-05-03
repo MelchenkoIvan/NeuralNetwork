@@ -1,4 +1,5 @@
 ﻿
+using NeuralNetworkAPI.Endpoints.Authorization;
 using NeuralNetworkAPI.Extension;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,10 +15,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
 app.UseCors(
-    options => options.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod()
+    options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
 );
-//app.MapControllers();
+app.UseMiddleware<BasicAuthMiddleware>();
+app.MapControllers();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

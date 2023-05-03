@@ -5,7 +5,7 @@ namespace NeuralNetworkCore
 {
 	public interface IUserRepositroy
 	{
-        Task<bool> Authenticate(string username, string password);
+        Task<UserDTO?> Authenticate(string username, string password);
 
         Task<UserDTO?> GetUser(string username);
 

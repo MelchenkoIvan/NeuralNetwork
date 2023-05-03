@@ -1,11 +1,13 @@
 using FeedForwardNeuralNetwork;
 using Microsoft.AspNetCore.Mvc;
+using NeuralNetworkAPI.Endpoints.Authorization;
 using NeuralNetworkCore.Models;
 
 namespace NeuralNetworkAPI.Endpoints.NeuralNetwork;
 
 [Route("[controller]")]
 [ApiController]
+[Authorize]
 public class NeuralNetworkController : Controller
 {
     [HttpPost("feedforward")]

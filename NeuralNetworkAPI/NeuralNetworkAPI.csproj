@@ -29,7 +29,6 @@
     <None Remove="Endpoints\NeuralNetwork\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Endpoints\" />
     <Folder Include="Extension\" />
   </ItemGroup>
 </Project>

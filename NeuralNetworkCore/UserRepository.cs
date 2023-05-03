@@ -33,16 +33,16 @@ namespace NeuralNetworkCore
             return true;
         }
 
-        public async Task<bool> Authenticate(string username, string password)
+        public async Task<UserDTO?> Authenticate(string username, string password)
         {
             if (!(await _userService.UserExist(username)))
-                return false;
+                return null;
 
             var user = await _userService.GetUser(username);
             if (user.Password == password)
-                return true;
+                return _mapper.Map<UserDTO>(user);
 
-            return false;
+            return null;
         }
 
         public async Task<UserDTO?> GetUser(string username)

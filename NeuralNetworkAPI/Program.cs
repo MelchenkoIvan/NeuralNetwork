@@ -10,9 +10,9 @@ builder.Services
     .AddDbContext(builder);
 builder.Services.AddCors();
 builder.Services.AddControllers();
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

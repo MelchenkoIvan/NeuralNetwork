@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using NeuralNetworkCore.Models;
 using NeuralNetworkDatabase;
 using NeuralNetworkDatabase.Entities;
@@ -8,13 +9,26 @@ namespace NeuralNetworkCore
 	public class UserRepository : IUserRepositroy
 	{
         private readonly IUserService _userService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IMapper _mapper;
+    
+        public UserDTO CurrentUser
+        {
+            get
+            {
+                var user = (UserDTO)_httpContextAccessor.HttpContext.Items["User"];
+                if (user == null)
+                    throw new Exception("Can not find current user!");
+                return user;
+            }
+        }
 
-		public UserRepository(IUserService userService, IMapper mapper)
+        public UserRepository(IUserService userService, IMapper mapper, IHttpContextAccessor httpContextAccessor)
 		{
             _userService = userService;
             _mapper = mapper;
-		}
+            _httpContextAccessor = httpContextAccessor;
+        }
 
         public async Task<bool> AddUser(string username, string password)
         {

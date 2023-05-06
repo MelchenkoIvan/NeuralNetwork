@@ -19,6 +19,8 @@ namespace NeuralNetworkDatabase.Entities
         public DateTime CreationDate { get; set; }
 
         public bool IsActive { get; set; } = false;
+        
+        public ICollection<Symptoms> Symptoms { get; set; }
 	}
 }
 

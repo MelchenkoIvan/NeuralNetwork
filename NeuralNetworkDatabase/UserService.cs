@@ -5,7 +5,7 @@ namespace NeuralNetworkDatabase
 {
     public class UserService : IUserService
     {
-        protected readonly NeuralNetworkDbContext _dbContext;
+        private readonly NeuralNetworkDbContext _dbContext;
 
         public UserService(NeuralNetworkDbContext dbContext)
         {

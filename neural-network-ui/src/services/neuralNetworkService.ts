@@ -1,3 +1,4 @@
+
 import { NNTypes, Symptomes } from '../features/neuralNetworkSlice';
 import * as conf from './defaultConfig';
 
@@ -12,5 +13,6 @@ export const neuralNetworkService = {
         catch (e) {
             console.log(e);
         }
-    }
+    },
+
 };

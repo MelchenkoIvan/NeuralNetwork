@@ -44,7 +44,6 @@ const SymptomesForm = () => {
             initialValues={initialValues}
             validationSchema={SymptomesSchemaValidation}
             onSubmit={(value: Symptomes, {setSubmitting}:FormikHelpers<Symptomes>) => {
-                console.log(value)
                 neuralNetworkService.Predict(value, selectedNN).then(data => {
                     dispatch(setResult(data ?? null))
                 })

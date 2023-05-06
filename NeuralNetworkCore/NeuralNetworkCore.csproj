@@ -8,8 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RecurrentNeuralNetwork\RecurrentNeuralNetwork.csproj" />
-    <ProjectReference Include="..\NeuralNetwork\FeedForwardNeuralNetwork.csproj" />
     <ProjectReference Include="..\NeuralNetworkDatabase\NeuralNetworkDatabase.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -22,5 +20,11 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions">
+      <HintPath>..\..\..\..\..\usr\local\share\dotnet\shared\Microsoft.AspNetCore.App\7.0.4\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

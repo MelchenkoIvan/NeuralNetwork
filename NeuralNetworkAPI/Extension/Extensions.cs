@@ -12,6 +12,7 @@ namespace NeuralNetworkAPI.Extension
 	{
 		public static IServiceCollection AddCore(this IServiceCollection services) =>
 			services.AddScoped<IUserRepositroy, UserRepository>()
+				.AddScoped<INeuralNetworkRepository, NeuralNetworkRepository>()
 				.AddAutoMapper(typeof(UserProfile));
 		
 

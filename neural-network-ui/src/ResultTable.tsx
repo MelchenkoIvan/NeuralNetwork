@@ -1,4 +1,4 @@
-import { Table, Menu, Icon } from 'semantic-ui-react'
+import { Table, Menu, Icon, Label } from 'semantic-ui-react'
 import { useAppDispatch, useAppSelector } from './app/hooks'
 import { NNTypes, setResult } from './features/neuralNetworkSlice'
 import { useEffect } from 'react'
@@ -7,9 +7,12 @@ import { neuralNetworkService } from "./services/neuralNetworkService";
 const ResultsTable = () => {
   const dispatch = useAppDispatch();
   const results = useAppSelector((state) => state.selectedNNType.results);
-  useEffect(() => {
+  const onGetPage = () =>{
     neuralNetworkService.List().then(data =>
       dispatch(setResult(data != undefined ? data : [])))
+  }
+  useEffect(() => {
+    onGetPage();
   }, [results.length]);
   
   return (
@@ -57,7 +60,14 @@ const ResultsTable = () => {
       <Table.Footer>
         <Table.Row>
           <Table.HeaderCell colSpan='15'>
-            The maximum visible number of visiable predictions in list is 5.
+            <Menu floated='right' pagination>
+            <Menu.Item as='a' onClick={onGetPage} icon>
+              <Icon name='redo' />
+            </Menu.Item>
+            <Menu.Item icon>
+              The maximum visible number of visiable predictions in list is 5.
+            </Menu.Item>
+          </Menu>
           </Table.HeaderCell>
         </Table.Row>
       </Table.Footer>

@@ -19,7 +19,8 @@ public class SymptomsService : ISymptomsService
     
     public Task<List<Symptoms>> GetSymptoms(int userId)
     {
-        var symptoms = _dbContext.Symptoms.Where(x => x.UserIdentity == userId).ToList();
-        return Task.FromResult(symptoms);
+        var symptoms = _dbContext.Symptoms.Where(x => x.UserIdentity == userId)
+            .ToList();
+        return Task.FromResult(symptoms.TakeLast(5).ToList());
     }
 }

@@ -13,7 +13,13 @@ public class SymptomsService : ISymptomsService
     
     public async Task AddSymptoms(Symptoms symptoms)
     {
-        await _dbContext.AddAsync(symptoms);
+        await _dbContext.Symptoms.AddAsync(symptoms);
         await _dbContext.SaveChangesAsync();
+    }
+    
+    public Task<List<Symptoms>> GetSymptoms(int userId)
+    {
+        var symptoms = _dbContext.Symptoms.Where(x => x.UserIdentity == userId).ToList();
+        return Task.FromResult(symptoms);
     }
 }

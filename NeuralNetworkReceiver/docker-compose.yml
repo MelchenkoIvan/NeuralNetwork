@@ -7,7 +7,7 @@ services:
       - RABBITMQ_DEFAULT_PASS=mypass
     ports:
       # RabbitMq instance
-      - '55672672:'
+      - '5672:5672'
       # Web interface
       - '15672:15672'
     

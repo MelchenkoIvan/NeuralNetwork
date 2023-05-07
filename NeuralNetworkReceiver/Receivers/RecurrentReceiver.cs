@@ -2,7 +2,7 @@ namespace NeuralNetworkReceiver.Receivers;
 
 public class RecurrentReceiver : IReceiver
 {
-    public Task Receive()
+    public void Receive()
     {
         throw new NotImplementedException();
     }

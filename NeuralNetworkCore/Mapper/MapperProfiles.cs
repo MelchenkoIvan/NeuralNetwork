@@ -12,5 +12,13 @@ namespace NeuralNetworkCore.Mapper
             CreateMap<User, UserDTO>().ReverseMap();
         }
     }
+    public class NNProfile : Profile
+    {
+        public NNProfile()
+        {
+            CreateMap<Symptoms, SymptomsDTO>();
+            CreateMap<Symptoms, ResultDTO>();
+        }
+    }
 }
 

@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 
 const notificationService = {
     Successful() {
-        toast.success(`Successful !`);
+        toast.success(`Successful!`);
     },
     BadRequest () {
         toast.error(`Bad Request!`);
@@ -18,6 +18,9 @@ const notificationService = {
     },
     WrongPasswordOrLogin(){
         toast.error(`Wrong password or login!`)
+    },
+    PredictionRequestSuccess(){
+        toast.success(`The symptoms were correctly loaded into the queue, please wait for the result to appear in the table!`);
     }
 };
 

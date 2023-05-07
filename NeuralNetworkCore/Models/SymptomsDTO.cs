@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace NeuralNetworkCore.Models;
 
-public class SymptomesDTO
+public class SymptomsDTO
 {
     [Required] public double Age { get; set; }
 

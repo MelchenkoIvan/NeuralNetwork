@@ -18,21 +18,26 @@ public class NeuralNetworkController : Controller
         _userRepositroy = userRepositroy;
     }
     [HttpPost("feedforward")]
-    public async Task<double> FeedFroward(SymptomesDTO req)
+    public async Task FeedFroward(SymptomsDTO req)
     {
-        var rabbitMqDto = new RabbitMqDto<SymptomesDTO>()
+        var rabbitMqDto = new RabbitMqSymptomsDto()
         {
             TriggeredBy = _userRepositroy.CurrentUser,
             Data = req
         };
         await _neuralNetworkRepository.SendSymptomsToQueue(rabbitMqDto);
-
-        return await Task.FromResult(1);
+        
     }
     
     [HttpPost("recurrent")]
-    public async Task<double> Recurrent(SymptomesDTO req)
+    public Task Recurrent(SymptomsDTO req)
     {
-        return await Task.FromResult(1);
+        return Task.CompletedTask;
+    }
+    
+    [HttpPost("list")]
+    public async Task<List<ResultDTO>> GetResults()
+    {
+       return await _neuralNetworkRepository.GetSymptoms(_userRepositroy.CurrentUser.UserIdentity);
     }
 }

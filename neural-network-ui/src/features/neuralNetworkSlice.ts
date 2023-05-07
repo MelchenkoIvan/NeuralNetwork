@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface Symptomes{
     Age: string,
     Sex: string,
+    Cp: string,
     Trestbps: string,
     Chol: string,
     Fbs: string,
@@ -15,6 +16,25 @@ export interface Symptomes{
     Thal: string
 };
 
+export interface Result{
+    symptomId:number,
+    age: string,
+    sex: string,
+    cp: string,
+    trestbps: string,
+    chol: string,
+    fbs: string,
+    restecg: string,
+    thalach: string,
+    exang: string,
+    oldpeak: string,
+    slope: string,
+    ca: string,
+    thal: string,
+    result: number,
+    nnType: NNTypes,
+};
+
 export enum NNTypes{
     RNN = 1,
     FFNN = 2
@@ -22,12 +42,12 @@ export enum NNTypes{
 
 export interface neuralNetworkState{
     nnType: NNTypes;
-    result: number|null;
+    results: Result[]
 };
 
 const initialState: neuralNetworkState = {
     nnType: NNTypes.FFNN,
-    result: null
+    results: []
 };
 
 const neuralNetworkSlice = createSlice({
@@ -37,8 +57,8 @@ const neuralNetworkSlice = createSlice({
         changeNeuralNetworkType(state, action: PayloadAction<NNTypes>){
             state.nnType = action.payload;
         },
-        setResult(state, action: PayloadAction<number|null>){
-            state.result = action.payload;
+        setResult(state, action: PayloadAction<Result[]>){
+            state.results = action.payload;
         }
     }
 })

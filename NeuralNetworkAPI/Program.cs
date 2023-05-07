@@ -5,7 +5,7 @@ using NeuralNetworkAPI.Extension;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .AddCore()
+    .AddCore(builder)
     .AddServices()
     .AddDbContext(builder);
 builder.Services.AddCors();

@@ -1,6 +1,8 @@
 using System.Text.Json;
 using FeedForwardNeuralNetwork;
+using Microsoft.Extensions.Options;
 using NeuralNetworkCore.Models;
+using NeuralNetworkCore.Models.Settings;
 using NeuralNetworkDatabase;
 using NeuralNetworkDatabase.Entities;
 using RabbitMQ.Client;
@@ -11,27 +13,30 @@ namespace NeuralNetworkReceiver.Receivers;
 public class FeedForwardReceiver : IReceiver
 {
     private readonly ISymptomsService _symptomsService;
-    public FeedForwardReceiver(ISymptomsService symptomsService)
+    private readonly IUserService _userService;
+    private readonly RabbitMqSettings _rabbitMqSettings;
+    public FeedForwardReceiver(ISymptomsService symptomsService, IOptions<RabbitMqSettings> rabbitMqSettings, IUserService userService)
     {
         _symptomsService = symptomsService;
+        _userService = userService;
+        _rabbitMqSettings = rabbitMqSettings.Value;
     }
     
-    public Task Receive()
+    public void Receive()
     {
         var factory = new ConnectionFactory()
         {
-            HostName = "localhost",
-            UserName = "user",
-            Password = "mypass",
-            VirtualHost = "/"
+            HostName = _rabbitMqSettings.HostName,
+            UserName = _rabbitMqSettings.UserName,
+            Password = _rabbitMqSettings.Password,
+            VirtualHost = _rabbitMqSettings.VirtualHost,
         };
-        var connection = factory.CreateConnection();
-
+        using var connection = factory.CreateConnection();
         using var channel = connection.CreateModel();
 
-        channel.QueueDeclare("symptoms", durable: false,
+        channel.QueueDeclare(_rabbitMqSettings.Queue, durable: false,
             exclusive: false,
-            autoDelete: false,
+            autoDelete:false,
             arguments: null);
 
         var consumer = new EventingBasicConsumer(channel);
@@ -39,11 +44,16 @@ public class FeedForwardReceiver : IReceiver
         {
             var body = ea.Body.ToArray();
             using MemoryStream ms = new MemoryStream(body);
-            var rabbitMqDto = JsonSerializer.Deserialize<RabbitMqDto<SymptomesDTO>>(ms);
-            var result = Executor.Predict(rabbitMqDto.Data.GetInputSignals());
+            
+            var rabbitMqDto = JsonSerializer.Deserialize<RabbitMqSymptomsDto>(ms);
+            var inputSignals = rabbitMqDto!.Data.GetInputSignals();
+            var result = Executor.Predict(inputSignals);
+            var user = _userService.GetUser(rabbitMqDto.TriggeredBy.UserName).GetAwaiter().GetResult();
+            
             var symptoms = new Symptoms
             {
-                UserIdentity = rabbitMqDto.TriggeredBy.Id,
+                User = user,
+                UserIdentity = user.UserIdentity,
                 Age = rabbitMqDto.Data.Age,
                 Sex = rabbitMqDto.Data.Sex,
                 Cp = rabbitMqDto.Data.Cp,
@@ -60,13 +70,15 @@ public class FeedForwardReceiver : IReceiver
                 Result = result,
                 NNType = (int)NNTypes.FFNN
             };
-            _symptomsService.AddSymptoms(symptoms);
+            _symptomsService.AddSymptoms(symptoms).GetAwaiter().GetResult();
             Console.WriteLine($"Result for user = ${rabbitMqDto.TriggeredBy.UserName} is ${result} ");
         };
-        channel.BasicConsume(queue: "symptoms",
+        
+        channel.BasicConsume(queue: _rabbitMqSettings.Queue,
             autoAck: true,
             consumer: consumer);
         
-        return Task.CompletedTask;
+        Console.WriteLine($"Press Enter to finish.");
+        Console.ReadLine();
     }
 }

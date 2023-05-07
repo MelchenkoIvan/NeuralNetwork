@@ -10,6 +10,7 @@ import * as Yup from 'yup';
 const initialValues: Symptomes = {
     Age: "",
     Sex: "",
+    Cp: "",
     Trestbps: "",
     Chol: "",
     Fbs: "",
@@ -44,9 +45,8 @@ const SymptomesForm = () => {
             initialValues={initialValues}
             validationSchema={SymptomesSchemaValidation}
             onSubmit={(value: Symptomes, {setSubmitting}:FormikHelpers<Symptomes>) => {
-                neuralNetworkService.Predict(value, selectedNN).then(data => {
-                    dispatch(setResult(data ?? null))
-                })
+                setSubmitting(true)
+                neuralNetworkService.Predict(value, selectedNN);
                 setSubmitting(false)
             }
         }>
@@ -66,6 +66,7 @@ const SymptomesForm = () => {
                     <div className="userAndPassword">
                         <InputField error={errors.Age} touched={touched.Age} fieldName="Age" placeholder="Type your age"/>
                         <InputField error={errors.Sex} touched={touched.Sex} fieldName="Sex" placeholder="Type your sex"/>
+                        <InputField error={errors.Cp} touched={touched.Cp} fieldName="Cp" placeholder="Type your cp"/>
                         <InputField error={errors.Trestbps} touched={touched.Trestbps} fieldName="Trestbps" placeholder="Type your Trestbps"/>
                         <InputField error={errors.Chol} touched={touched.Chol} fieldName="Chol" placeholder="Type your Chol"/>
                         <InputField error={errors.Fbs} touched={touched.Fbs} fieldName="Fbs" placeholder="Type your Fbs"/>

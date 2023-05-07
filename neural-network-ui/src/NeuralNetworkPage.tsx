@@ -3,6 +3,7 @@ import { useAppSelector} from './app/hooks'
 import { useNavigate } from "react-router-dom";
 import SymptomesForm from "./forms/SymptomesForm";
 import ChangeNeuralNetworkType from "./ChangeNeuralNetworkType";
+import ResultsTable from "./ResultTable";
 
 const NeuralNetworkPage:FC = () => {
     const authdata = useAppSelector((state) => state.user.authdata);
@@ -18,6 +19,7 @@ const NeuralNetworkPage:FC = () => {
         <>
             <ChangeNeuralNetworkType />
             <SymptomesForm />
+            <ResultsTable />
         </>
     )
 }

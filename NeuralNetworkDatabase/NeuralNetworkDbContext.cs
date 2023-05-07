@@ -7,6 +7,7 @@ namespace NeuralNetworkDatabase
 	public class NeuralNetworkDbContext : DbContext
 	{
         public DbSet<User> Users { get; set; }
+        public DbSet<Symptoms> Symptoms { get; set; }
 
         public NeuralNetworkDbContext(DbContextOptions options) : base(options)
         {

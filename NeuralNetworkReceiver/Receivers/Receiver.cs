@@ -1,4 +1,5 @@
 using System.Text.Json;
+using AutoMapper;
 using FeedForwardNeuralNetwork;
 using Microsoft.Extensions.Options;
 using NeuralNetworkCore.Models;
@@ -10,15 +11,17 @@ using RabbitMQ.Client.Events;
 
 namespace NeuralNetworkReceiver.Receivers;
 
-public class FeedForwardReceiver : IReceiver
+public class Receiver : IReceiver
 {
     private readonly ISymptomsService _symptomsService;
     private readonly IUserService _userService;
     private readonly RabbitMqSettings _rabbitMqSettings;
-    public FeedForwardReceiver(ISymptomsService symptomsService, IOptions<RabbitMqSettings> rabbitMqSettings, IUserService userService)
+    private readonly IMapper _mapper;
+    public Receiver(ISymptomsService symptomsService, IOptions<RabbitMqSettings> rabbitMqSettings, IUserService userService, IMapper mapper)
     {
         _symptomsService = symptomsService;
         _userService = userService;
+        _mapper = mapper;
         _rabbitMqSettings = rabbitMqSettings.Value;
     }
     
@@ -46,8 +49,20 @@ public class FeedForwardReceiver : IReceiver
             using MemoryStream ms = new MemoryStream(body);
             
             var rabbitMqDto = JsonSerializer.Deserialize<RabbitMqSymptomsDto>(ms);
-            var inputSignals = rabbitMqDto!.Data.GetInputSignals();
-            var result = Executor.Predict(inputSignals);
+            if (rabbitMqDto is null)
+                throw new Exception("Cant read data from queue");
+            
+            double result;
+            if (rabbitMqDto.NnType == NNTypes.FFNN)
+            {
+                var inputSignals = rabbitMqDto!.Data.GetInputSignals();
+                result = Executor.Predict(inputSignals);
+            }
+            else
+            {
+                result = RecurrentNeuralNetwork.Executor.Predict(CreateInputSignalsForRnn(rabbitMqDto));
+            }
+
             var user = _userService.GetUser(rabbitMqDto.TriggeredBy.UserName).GetAwaiter().GetResult();
             
             var symptoms = new Symptoms
@@ -68,7 +83,7 @@ public class FeedForwardReceiver : IReceiver
                 Ca = rabbitMqDto.Data.Ca,
                 Thal = rabbitMqDto.Data.Thal,
                 Result = result,
-                NNType = (int)NNTypes.FFNN
+                NNType = (int)rabbitMqDto.NnType
             };
             _symptomsService.AddSymptoms(symptoms).GetAwaiter().GetResult();
             Console.WriteLine($"Result for user = ${rabbitMqDto.TriggeredBy.UserName} is ${result} ");
@@ -80,5 +95,19 @@ public class FeedForwardReceiver : IReceiver
         
         Console.WriteLine($"Press Enter to finish.");
         Console.ReadLine();
+    }
+    
+    private List<double[,]> CreateInputSignalsForRnn(RabbitMqSymptomsDto rabbitMqDto)
+    {
+        var previousPredictions = _symptomsService.GetSymptoms(rabbitMqDto.TriggeredBy.UserIdentity).GetAwaiter().GetResult();
+        var previousMappedResults = _mapper.Map<List<SymptomsDTO>>(previousPredictions);
+        
+        var inputSignals = new List<double[,]>();
+        foreach (var prevResult in previousMappedResults)
+        {
+            inputSignals.Add(prevResult.GetInputSignals());
+        }
+        inputSignals.Add(rabbitMqDto.Data.GetInputSignals());
+        return inputSignals;
     }
 }

@@ -23,6 +23,7 @@ public class NeuralNetworkController : Controller
         var rabbitMqDto = new RabbitMqSymptomsDto()
         {
             TriggeredBy = _userRepositroy.CurrentUser,
+            NnType = NNTypes.FFNN,
             Data = req
         };
         await _neuralNetworkRepository.SendSymptomsToQueue(rabbitMqDto);
@@ -30,9 +31,15 @@ public class NeuralNetworkController : Controller
     }
     
     [HttpPost("recurrent")]
-    public Task Recurrent(SymptomsDTO req)
+    public async Task Recurrent(SymptomsDTO req)
     {
-        return Task.CompletedTask;
+        var rabbitMqDto = new RabbitMqSymptomsDto()
+        {
+            TriggeredBy = _userRepositroy.CurrentUser,
+            NnType = NNTypes.RNN,
+            Data = req
+        };
+        await _neuralNetworkRepository.SendSymptomsToQueue(rabbitMqDto);
     }
     
     [HttpPost("list")]

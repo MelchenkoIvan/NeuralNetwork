@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NeuralNetworkCore.Models.Settings;
 using NeuralNetworkDatabase;
+using NeuralNetworkReceiver.Common.Mapper;
 using NeuralNetworkReceiver.Receivers;
 
 namespace NeuralNetworkReceiver
@@ -20,8 +21,8 @@ namespace NeuralNetworkReceiver
 
             var serviceProvider = new ServiceCollection()
                 .AddLogging()
-                .AddScoped<IReceiver, FeedForwardReceiver>()
-                //.AddScoped<IReceiver, RecurrentReceiver>()
+                .AddAutoMapper(typeof(NnProfile))
+                .AddScoped<IReceiver, Receiver>()
                 .AddScoped<ISymptomsService, SymptomsService>()
                 .AddScoped<IUserService, UserService>()
                 .Configure<RabbitMqSettings>(config.GetSection(nameof(RabbitMqSettings)))

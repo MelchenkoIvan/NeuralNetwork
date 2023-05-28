@@ -17,7 +17,7 @@ namespace NeuralNetworkCore.Mapper
         public NNProfile()
         {
             CreateMap<Symptoms, SymptomsDTO>();
-            CreateMap<Symptoms, ResultDTO>();
+            CreateMap<Symptoms, SymptomsWithResultDTO>();
         }
     }
 }

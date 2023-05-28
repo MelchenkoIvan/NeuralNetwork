@@ -51,22 +51,16 @@ public class NeuralNetwork
         }
     }
 
-    public double Learn(double[] expected, double[,] inputs, int epoch)
+    public void Learn(double[] expected, double[,] inputs, int epoch)
     {
-        var error = 0.0;
         for (int i = 0; i < epoch; i++)
         {
             for (int j = 0; j < expected.Length; j++)
             {
                 var output = expected[j];
                 var input = GetRow(inputs, j);
-
-                error += Backpropagation(output, input);
             }
         }
-
-        var result = error / epoch;
-        return result;
     }
 
     public static double[] GetRow(double[,] matrix, int row)
@@ -79,15 +73,15 @@ public class NeuralNetwork
     }
 
 
-    private double Backpropagation(double exprected, params double[] inputs)
+    private void Backpropagation(double exprected, params double[] inputs)
     {
         var actual = Predict(inputs).Output;
 
-        var difference = actual - exprected;
+        var error = actual - exprected;
 
         foreach (var neuron in Layers.Last().Neurons)
         {
-            neuron.Learn(difference, Topology.LearningRate);
+            neuron.Learn(error, Topology.LearningRate);
         }
 
         for (int j = Layers.Count - 2; j >= 0; j--)
@@ -98,18 +92,19 @@ public class NeuralNetwork
             for (int i = 0; i < layer.NeuronCount; i++)
             {
                 var neuron = layer.Neurons[i];
-
+                    
+                double previousDeltaMultiplySpecificWeights = 0.0;
+                    
                 for (int k = 0; k < previousLayer.NeuronCount; k++)
                 {
                     var previousNeuron = previousLayer.Neurons[k];
-                    var error = previousNeuron.Weights[i] * previousNeuron.Delta;
-                    neuron.Learn(error, Topology.LearningRate);
+
+                    previousDeltaMultiplySpecificWeights += previousNeuron.Weights[i] * previousNeuron.Delta;
+                        
                 }
+                neuron.Learn(error, Topology.LearningRate, previousDeltaMultiplySpecificWeights);
             }
         }
-
-        var result = difference * difference;
-        return result;
     }
 
     private void FeedForwardAllLayersAfterInput()

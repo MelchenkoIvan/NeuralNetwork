@@ -51,7 +51,7 @@ namespace FeedForwardNeuralNetwork
 
             var normalizedInputs = DataSetHelper.Scalling(inputSignals);
 
-            neuralNetwork.Learn(outputs.ToArray(), normalizedInputs, 5000);
+            neuralNetwork.Learn(outputs.ToArray(), normalizedInputs, 50000);
             Console.WriteLine($"NN learnd during: {DateTime.Now - startTime}");
             return neuralNetwork;
         }

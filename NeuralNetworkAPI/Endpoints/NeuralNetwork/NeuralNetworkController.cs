@@ -20,7 +20,7 @@ public class NeuralNetworkController : Controller
     [HttpPost("feedforward")]
     public async Task FeedFroward(SymptomsDTO req)
     {
-        var rabbitMqDto = new RabbitMqSymptomsDto()
+        var rabbitMqDto = new RabbitMqSymptomsDTO()
         {
             TriggeredBy = _userRepositroy.CurrentUser,
             NnType = NNTypes.FFNN,
@@ -33,7 +33,7 @@ public class NeuralNetworkController : Controller
     [HttpPost("recurrent")]
     public async Task Recurrent(SymptomsDTO req)
     {
-        var rabbitMqDto = new RabbitMqSymptomsDto()
+        var rabbitMqDto = new RabbitMqSymptomsDTO()
         {
             TriggeredBy = _userRepositroy.CurrentUser,
             NnType = NNTypes.RNN,
@@ -43,7 +43,7 @@ public class NeuralNetworkController : Controller
     }
     
     [HttpPost("list")]
-    public async Task<List<ResultDTO>> GetResults()
+    public async Task<List<SymptomsWithResultDTO>> GetResults()
     {
        return await _neuralNetworkRepository.GetSymptoms(_userRepositroy.CurrentUser.UserIdentity);
     }

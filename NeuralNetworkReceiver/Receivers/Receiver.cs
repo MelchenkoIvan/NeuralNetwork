@@ -48,7 +48,7 @@ public class Receiver : IReceiver
             var body = ea.Body.ToArray();
             using MemoryStream ms = new MemoryStream(body);
             
-            var rabbitMqDto = JsonSerializer.Deserialize<RabbitMqSymptomsDto>(ms);
+            var rabbitMqDto = JsonSerializer.Deserialize<RabbitMqSymptomsDTO>(ms);
             if (rabbitMqDto is null)
                 throw new Exception("Cant read data from queue");
             
@@ -97,7 +97,7 @@ public class Receiver : IReceiver
         Console.ReadLine();
     }
     
-    private List<double[,]> CreateInputSignalsForRnn(RabbitMqSymptomsDto rabbitMqDto)
+    private List<double[,]> CreateInputSignalsForRnn(RabbitMqSymptomsDTO rabbitMqDto)
     {
         var previousPredictions = _symptomsService.GetSymptoms(rabbitMqDto.TriggeredBy.UserIdentity).GetAwaiter().GetResult();
         var previousMappedResults = _mapper.Map<List<SymptomsDTO>>(previousPredictions);

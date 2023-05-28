@@ -15,14 +15,15 @@ public class NeuralNetworkRepository : INeuralNetworkRepository
     private readonly ISymptomsService _symptomsService;
     private readonly IMapper _mapper;
 
-    public NeuralNetworkRepository(IOptions<RabbitMqSettings> rabbitMqSettings, ISymptomsService symptomsService, IMapper mapper)
+    public NeuralNetworkRepository(IOptions<RabbitMqSettings> rabbitMqSettings,
+        ISymptomsService symptomsService, IMapper mapper)
     {
         _symptomsService = symptomsService;
         _mapper = mapper;
         _rabbitMqSettings = rabbitMqSettings.Value;
     }
 
-    public Task SendSymptomsToQueue(RabbitMqSymptomsDto data)
+    public Task SendSymptomsToQueue(RabbitMqSymptomsDTO data)
     {
         var factory = new ConnectionFactory()
         {
@@ -47,9 +48,9 @@ public class NeuralNetworkRepository : INeuralNetworkRepository
         return Task.CompletedTask;
     }
 
-    public async Task<List<ResultDTO>> GetSymptoms(int userId)
+    public async Task<List<SymptomsWithResultDTO>> GetSymptoms(int userId)
     {
         var symptomsWithResult = await _symptomsService.GetSymptoms(userId);
-        return _mapper.Map<List<ResultDTO>>(symptomsWithResult);
+        return _mapper.Map<List<SymptomsWithResultDTO>>(symptomsWithResult);
     }
 }

@@ -1,6 +1,6 @@
 namespace NeuralNetworkCore.Models;
 
-public class ResultDTO
+public class SymptomsWithResultDTO
 {
     public int SymptomId { get; set; }
     

@@ -4,6 +4,6 @@ namespace NeuralNetworkCore;
 
 public interface INeuralNetworkRepository
 {
-     Task SendSymptomsToQueue(RabbitMqSymptomsDto symptoms);
-     Task<List<ResultDTO>> GetSymptoms(int userId);
+     Task SendSymptomsToQueue(RabbitMqSymptomsDTO symptoms);
+     Task<List<SymptomsWithResultDTO>> GetSymptoms(int userId);
 }

@@ -3,9 +3,13 @@
     public class Neuron
     {
         public List<double> Weights { get; }
+
         public List<double> Inputs { get; }
+        
         public NeuronType NeuronType { get; }
+        
         public double Output { get; private set; }
+        
         public double Delta { get; private set; }
 
         public Neuron(int inputCount, NeuronType type = NeuronType.Normal)
@@ -66,21 +70,42 @@
             var result = 1.0 / (1.0 + Math.Pow(Math.E, -x));
             return result;
         }
-
-        public void Learn(double error, double learningRate)
+        
+        private double DerivativeSigmoid(double x)
+        {
+            var result = x * (1 - x);
+            return result;
+        }
+        
+        public void Learn(double error, double learningRate, double? previousDeltaMultiplySpecificWeights = null)
         {
             if (NeuronType == NeuronType.Input)
             {
                 return;
             }
 
-            Delta = error * Output * (1 - Output);
+            if (NeuronType == NeuronType.Output)
+            {
+                Delta = error * DerivativeSigmoid(Output);
+            }
+
+            if (NeuronType == NeuronType.Normal || NeuronType == NeuronType.Input)
+            {
+                if (previousDeltaMultiplySpecificWeights == null)
+                    throw new Exception("previousDeltaMultiplySpecificWeights can not be calculated in this neuron because it is important to know previous neuron relationship weights and delta.");
+                
+                Delta = (double)previousDeltaMultiplySpecificWeights * DerivativeSigmoid(Output);
+            }
+            
+            
             for (int i = 0; i < Weights.Count; i++)
             {
+                
                 var weight = Weights[i];
                 var input = Inputs[i];
 
                 var newWeigth = weight - input * Delta * learningRate;
+                
                 Weights[i] = newWeigth;
             }
         }

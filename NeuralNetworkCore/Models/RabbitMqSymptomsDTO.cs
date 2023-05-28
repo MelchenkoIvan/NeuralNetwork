@@ -1,6 +1,6 @@
 namespace NeuralNetworkCore.Models;
 
-public class RabbitMqSymptomsDto
+public class RabbitMqSymptomsDTO
 {
     public UserDTO TriggeredBy { get; set; }
     

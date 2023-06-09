@@ -1,8 +1,5 @@
 namespace RecurrentNeuralNetwork;
 
-
-
-
 public class NeuralNetwork
 {
     public Topology Topology { get; }
@@ -116,7 +113,7 @@ public class NeuralNetwork
 
             foreach (var neuron in layer.Neurons)
             {
-                neuron.FeedForward(previousLayerSingals);
+                neuron.Recurrent(previousLayerSingals);
             }
         }
     }
@@ -128,7 +125,7 @@ public class NeuralNetwork
             var signal = new List<double>() { inputSignals[i] };
             var neuron = Layers[0].Neurons[i];
 
-            neuron.FeedForward(signal);
+            neuron.Recurrent(signal);
         }
     }
 

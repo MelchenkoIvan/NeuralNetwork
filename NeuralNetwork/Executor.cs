@@ -46,7 +46,7 @@ namespace FeedForwardNeuralNetwork
                 hiddenLayers[i] = inputLayerNeuronsCount - 1 - i;
             }
 
-            var topology = new Topology(inputLayerNeuronsCount, 1, 0.1, 6);
+            var topology = new Topology(inputLayerNeuronsCount, 1, 0.01, 6);
             var neuralNetwork = new NeuralNetwork(topology);
 
             var normalizedInputs = DataSetHelper.Scalling(inputSignals);

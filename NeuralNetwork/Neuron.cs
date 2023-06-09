@@ -92,12 +92,13 @@
             if (NeuronType == NeuronType.Normal || NeuronType == NeuronType.Input)
             {
                 if (previousDeltaMultiplySpecificWeights == null)
-                    throw new Exception("previousDeltaMultiplySpecificWeights can not be calculated in this neuron because it is important to know previous neuron relationship weights and delta.");
+                    throw new Exception("previousDeltaMultiplySpecificWeights can not " +
+                                        "be calculated in this neuron because it is important " +
+                                        "to know previous neuron relationship weights and delta.");
                 
                 Delta = (double)previousDeltaMultiplySpecificWeights * DerivativeSigmoid(Output);
             }
-            
-            
+
             for (int i = 0; i < Weights.Count; i++)
             {
                 

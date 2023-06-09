@@ -35,8 +35,6 @@
         {
             for (int i = 0; i < epoch; i++)
             {
-                var rnd = new Random();
-                var randomRow = rnd.Next(0, expected.Length);
                 for (int j = 0; j < expected.Length; j++)
                 {
                     var output = expected[j];

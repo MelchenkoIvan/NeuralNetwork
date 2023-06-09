@@ -39,7 +39,7 @@ namespace RecurrentNeuralNetwork
             }
         }
 
-        public double FeedForward(List<double> inputs)
+        public double Recurrent(List<double> inputs)
         {
             for (int i = 0; i < inputs.Count; i++)
             {

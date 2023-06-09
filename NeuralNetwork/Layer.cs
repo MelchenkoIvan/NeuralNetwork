@@ -4,6 +4,7 @@
     {
         public List<Neuron> Neurons { get; }
         public int NeuronCount => Neurons?.Count ?? 0;
+        
         public NeuronType Type;
 
         public Layer(List<Neuron> neurons, NeuronType type = NeuronType.Normal)
